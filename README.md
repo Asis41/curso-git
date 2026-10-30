@@ -29,11 +29,16 @@ trabajar en equipo con Pull Requests.
 
 ## Cómo usar este repositorio
 
-1. Descarga el repo: botón verde **Code → Download ZIP** (o, a partir del módulo 3, `git clone <URL>`).
-2. Sigue los módulos en orden. Cada uno tiene teoría breve, comandos y una práctica paso a paso con una
-   sección **✅ Comprueba que lo lograste**.
-3. Las prácticas se hacen en **tu propio repositorio**, no en este. En el módulo 2 copias la página de
-   ejemplo de [`proyecto/`](proyecto/) a una carpeta nueva y la conviertes en tu repo.
+Todo el curso se practica sobre **tu copia de este repositorio**, al mismo tiempo que se proyectan las slides:
+
+1. **Módulo 1:** botón verde **Code → Download ZIP**, descomprímelo y renombra la carpeta `curso-git-main`
+   a `curso-git`. El ZIP no trae historial de Git.
+2. **Módulo 2:** conviertes esa carpeta en repositorio con `git init`, personalizas
+   [`proyecto/index.html`](proyecto/) y creas tu propio `me-gusta.txt`.
+3. **Módulo 3:** la subes a un repo `curso-git` en **tu** cuenta de GitHub.
+4. **Módulos 4 a 7:** ramas, conflictos y Pull Requests sobre ese mismo repo.
+
+Cada guía indica en qué slide va su práctica (📽️) y termina con **✅ Comprueba que lo lograste**.
 
 ## Contenido
 

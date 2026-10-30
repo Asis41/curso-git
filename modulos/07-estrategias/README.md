@@ -155,12 +155,12 @@ Más información: <https://www.conventionalcommits.org/es/>
 
 ## 🛠️ Práctica final
 
-En tu repo `mi-pagina`, aplica todo el curso siguiendo **GitHub Flow**:
+> 📽️ **Slide 35.** En tu repo `curso-git`, aplica todo el curso siguiendo **GitHub Flow**:
 
 1. Crea una rama con el prefijo correcto para cada tarea:
-   - `feature/` para agregar una sección nueva.
-   - `fix/` para corregir algo (una errata, un color).
-   - `docs/` para agregar un `README.md` que describa tu página.
+   - `feature/` para agregar una sección nueva a `proyecto/index.html`.
+   - `fix/` para corregir algo (una errata en `me-gusta.txt`, un color).
+   - `docs/` para agregar un `proyecto/README.md` que describa tu página.
 2. Escribe commits con mensajes en **imperativo**, ≤50 caracteres (prueba Conventional Commits).
 3. Abre un PR por rama, fusiónalo y borra la rama.
 

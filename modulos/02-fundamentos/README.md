@@ -97,58 +97,61 @@ Puedes ver un `.gitignore` comentado en la raíz de este repo: [`.gitignore`](..
 
 ## 🛠️ Práctica: tu primer repositorio
 
-**Importante:** trabaja en una carpeta **fuera** del repo del curso.
+> 📽️ **Slide 10.** Trabaja en la carpeta `curso-git` que descargaste en el módulo 1. Como el ZIP no trae
+> historial, todavía no es un repositorio: lo vas a convertir en uno.
 
-1. Crea tu carpeta de trabajo y copia la página de ejemplo:
-
-   ```bash
-   mkdir ~/mi-pagina
-   cp ruta/al/curso/proyecto/* ~/mi-pagina/
-   cd ~/mi-pagina
-   ```
-
-   > **Windows (Git Bash):** `~` es tu carpeta de usuario (`C:\Users\TuUsuario`). También puedes copiar
-   > los archivos con el Explorador y luego abrir Git Bash en esa carpeta.
-
-2. Inicializa el repo y observa el estado:
+1. Entra en la carpeta, inicializa el repo y observa el estado:
 
    ```bash
+   cd ~/curso-git
    git init
-   git status          # index.html y styles.css aparecen como "Untracked"
+   git status          # todos los archivos del curso aparecen como "Untracked"
    ```
 
-3. **Commit 1** – versión inicial:
+2. **Commit 1** – versión inicial:
 
    ```bash
    git add .
    git status          # ahora aparecen como "Changes to be committed"
-   git commit -m "Agrega página inicial"
+   git commit -m "Agrega el material del curso"
    ```
 
-4. **Commit 2** – personaliza: abre `index.html` y cambia `[tu nombre]` por tu nombre.
+3. **Commit 2** – personaliza la página: abre `proyecto/index.html` y cambia `[tu nombre]` por tu nombre.
 
    ```bash
-   git status          # index.html: modified
+   git status          # proyecto/index.html: modified
    git diff            # muestra exactamente qué línea cambió
-   git add index.html
-   git commit -m "Agrega mi nombre a la sección Sobre mí"
+   git add proyecto/index.html
+   git commit -m "Agrega mi nombre a la página"
    ```
 
-5. **Commit 3** – agrega un elemento a la lista de herramientas (por ejemplo `<li>Git Bash</li>`) y haz commit
-   con un mensaje descriptivo.
-
-6. **Commit 4** – `.gitignore`:
+4. **Commit 3** – un archivo tuyo: crea `me-gusta.txt` con algo que te guste (una película, una canción,
+   una comida, un videojuego...). Una cosa por línea.
 
    ```bash
-   echo "Ideas para mi página" > notas.txt
+   echo "Mi película favorita: El viaje de Chihiro" > me-gusta.txt
+   echo "Mi comida favorita: tacos al pastor" >> me-gusta.txt
+   git status          # me-gusta.txt aparece como Untracked
+   git add me-gusta.txt
+   git commit -m "Agrega lo que me gusta"
+   ```
+
+   > `>` crea (o sobrescribe) el archivo; `>>` añade una línea al final. También puedes crearlo con tu editor.
+
+5. **Commit 4** – un archivo que **no** quieres guardar en Git:
+
+   ```bash
+   echo "Ideas sueltas, no subir" > notas.txt
    git status          # notas.txt aparece como Untracked
-   echo "notas.txt" > .gitignore
-   git status          # notas.txt desaparece; .gitignore aparece como Untracked
+   echo "notas.txt" >> .gitignore
+   git status          # notas.txt desaparece; .gitignore aparece como modified
    git add .gitignore
    git commit -m "Ignora el archivo de notas personales"
    ```
 
-7. Revisa tu historial:
+   > **Ojo con `>>`:** este repo ya trae un `.gitignore`. Con `>` lo sobrescribirías y perderías su contenido.
+
+6. Revisa tu historial:
 
    ```bash
    git log
@@ -161,16 +164,16 @@ Puedes ver un `.gitignore` comentado en la raíz de este repo: [`.gitignore`](..
 
 ```
 d4e5f6a Ignora el archivo de notas personales
-c3d4e5f Agrega Git Bash a la lista de herramientas
-b2c3d4e Agrega mi nombre a la sección Sobre mí
-a1b2c3d Agrega página inicial
+c3d4e5f Agrega lo que me gusta
+b2c3d4e Agrega mi nombre a la página
+a1b2c3d Agrega el material del curso
 ```
 
-Y `git status` dice `nothing to commit, working tree clean`.
+Y `git status` dice `nothing to commit, working tree clean` (aunque `notas.txt` sigue en tu carpeta).
 
 ### 🚀 Reto extra
 
-- Modifica `index.html` y `styles.css`, pero haz **un commit con cada archivo por separado**.
+- Agrega una línea a `me-gusta.txt` y otra a `proyecto/index.html`, pero haz **un commit con cada archivo por separado**.
 - Prueba `git log -p` (muestra el cambio de cada commit) y `git show HEAD` (el último commit).
 
 ---

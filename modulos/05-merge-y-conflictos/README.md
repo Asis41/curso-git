@@ -164,15 +164,17 @@ Pull Request. **En duda, usa merge.**
 
 ## 🛠️ Práctica: provocar y resolver un conflicto
 
+> 📽️ **Slide 25.**
+
 ### Parte A: los tres tipos de merge con el script
 
-Desde la carpeta del **repo del curso**:
+Desde tu carpeta `curso-git`:
 
 ```bash
 bash scripts/escenario-merge.sh
 ```
 
-El script crea la carpeta `../practica-merge` (junto a la del curso) con un repo y estas ramas:
+El script crea la carpeta `../practica-merge` (junto a tu `curso-git`, no dentro) con un repo y estas ramas:
 
 | Rama | Qué cambia | Qué pasará al fusionarla |
 |---|---|---|
@@ -201,24 +203,39 @@ Resuelve el conflicto siguiendo los pasos de la sección 2 (decide tú el títul
 > ¿Quieres repetir la práctica? Borra la carpeta `practica-merge` y vuelve a ejecutar el script, o pásale
 > otra carpeta: `bash scripts/escenario-merge.sh ../practica-merge-2`.
 
-### Parte B: provócalo tú mismo en `mi-pagina`
+### Parte B: provócalo tú mismo en tu `curso-git`
+
+Primero integra la rama del módulo 4:
 
 ```bash
-cd ~/mi-pagina
+cd ~/curso-git
 git switch main
-git merge feature/galeria            # rama del módulo 4 (probablemente fast-forward)
+git merge feature/galeria            # probablemente fast-forward
+```
 
-git switch -c cambio-a
-# edita la línea <p class="lema"> con un texto, y haz commit
+Ahora dos ramas van a cambiar **la primera línea de `me-gusta.txt`**:
+
+```bash
+git switch -c gusto-a
+# con tu editor, cambia la PRIMERA línea de me-gusta.txt (p. ej. otra película)
+git commit -am "Cambia mi película favorita"
 
 git switch main
-git switch -c cambio-b
-# edita LA MISMA línea con otro texto distinto, y haz commit
+git switch -c gusto-b
+# cambia LA MISMA primera línea, con un texto distinto
+git commit -am "Cambia mi película favorita por otra"
 
 git switch main
-git merge cambio-a                   # fast-forward
-git merge cambio-b                   # conflicto: resuélvelo
-git branch -d cambio-a cambio-b      # limpia las ramas fusionadas
+git merge gusto-a                    # fast-forward
+git merge gusto-b                    # ¡CONFLICTO en me-gusta.txt!
+```
+
+Abre `me-gusta.txt`, decide qué queda (¿por qué no las dos películas?), borra los marcadores y termina:
+
+```bash
+git add me-gusta.txt
+git commit --no-edit
+git branch -d gusto-a gusto-b        # limpia las ramas fusionadas
 git push
 ```
 
@@ -252,6 +269,8 @@ Y `index.html` **no contiene** ningún `<<<<<<<`, `=======` ni `>>>>>>>`:
 ```bash
 grep -n "<<<<<<<\|>>>>>>>" index.html   # no debe imprimir nada
 ```
+
+En tu `curso-git` (Parte B), lo mismo con `me-gusta.txt`, y en GitHub ves el commit de merge.
 
 ### 🚀 Reto extra
 

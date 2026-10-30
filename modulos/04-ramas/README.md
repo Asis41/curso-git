@@ -103,7 +103,7 @@ tutoriales y en internet, así que conviene reconocerlo:
 
 ## 🛠️ Práctica: una feature en su propia rama
 
-Trabaja en tu repo `mi-pagina` de los módulos anteriores.
+> 📽️ **Slide 19.** Trabaja en tu carpeta `curso-git` de los módulos anteriores.
 
 1. Asegúrate de estar al día en `main`:
 
@@ -119,7 +119,7 @@ Trabaja en tu repo `mi-pagina` de los módulos anteriores.
    git branch          # * feature/galeria
    ```
 
-3. En `index.html`, agrega una sección nueva dentro de `<main>`, después de "Herramientas que uso":
+3. En `proyecto/index.html`, agrega una sección nueva dentro de `<main>`, después de "Herramientas que uso":
 
    ```html
    <section id="galeria">
@@ -132,17 +132,17 @@ Trabaja en tu repo `mi-pagina` de los módulos anteriores.
    ```
 
    ```bash
-   git add index.html
+   git add proyecto/index.html
    git commit -m "Agrega sección de proyectos favoritos"
    ```
 
-4. Agrega un estilo para la sección en `styles.css` (por ejemplo `#galeria { background: #f6f8fa; padding: 8px 16px; }`)
+4. Agrega un estilo para la sección en `proyecto/styles.css` (por ejemplo `#galeria { background: #f6f8fa; padding: 8px 16px; }`)
    y haz otro commit.
 
 5. **Observa cómo cambian tus archivos según la rama:**
 
    ```bash
-   git switch main     # abre index.html en el navegador: la galería NO está
+   git switch main     # abre proyecto/index.html en el navegador: la galería NO está
    git switch -        # vuelve a feature/galeria: la galería aparece
    ```
 
@@ -178,7 +178,7 @@ Trabaja en tu repo `mi-pagina` de los módulos anteriores.
 ```
 * 9f8e7d6 (HEAD -> feature/galeria, origin/feature/galeria) Agrega estilos a la galería
 * 8e7d6c5 Agrega sección de proyectos favoritos
-* 7d6c5b4 (origin/main, main) Cambia el lema del header
+* 7d6c5b4 (origin/main, main) Agrega mi serie favorita
 * ...
 ```
 

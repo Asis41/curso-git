@@ -98,15 +98,23 @@ git config user.name        # consultar un valor concreto
 
 ## 🛠️ Práctica
 
+> 📽️ **Slide 6.** Todo el curso se practica sobre **tu copia de este repositorio**: la descargas ahora y la
+> usas hasta el módulo 7.
+
 1. Instala Git según tu sistema operativo.
 2. Abre la terminal (Git Bash en Windows) y comprueba `git --version`.
 3. Configura nombre, correo y rama por defecto.
-4. Descarga este repositorio del curso (botón verde **Code → Download ZIP** en GitHub, y descomprímelo),
-   entra en su carpeta y ejecuta el verificador:
+4. Descarga este repositorio: en <https://github.com/Asis41/curso-git>, botón verde **Code → Download ZIP**.
+5. Descomprímelo en tu carpeta de usuario y **renombra la carpeta** `curso-git-main` a `curso-git`.
+6. Entra en la carpeta y ejecuta el verificador:
 
    ```bash
+   cd ~/curso-git
    bash scripts/verificar-config.sh
    ```
+
+   > **Windows:** `~` es tu carpeta de usuario (`C:\Users\TuUsuario`). También puedes abrir la carpeta en el
+   > Explorador, clic derecho → **Open Git Bash here**.
 
 ### ✅ Comprueba que lo lograste
 

@@ -21,12 +21,12 @@ flowchart LR
 ## 2. Crear el repositorio en GitHub
 
 1. En GitHub: botón **+** (arriba a la derecha) → **New repository**.
-2. Nombre: `mi-pagina`. Visibilidad: pública o privada.
+2. Nombre: `curso-git`. Visibilidad: **pública** (la necesitarás así en el módulo 6).
 3. **No** marques "Add a README", ".gitignore" ni "license": tu repo local ya tiene historial y el remoto
    debe estar vacío para subirlo sin conflictos.
 4. **Create repository**. GitHub muestra la URL del repo, en dos formatos:
-   - HTTPS: `https://github.com/tu-usuario/mi-pagina.git`
-   - SSH: `git@github.com:tu-usuario/mi-pagina.git`
+   - HTTPS: `https://github.com/tu-usuario/curso-git.git`
+   - SSH: `git@github.com:tu-usuario/curso-git.git`
 
 ## 3. Autenticación
 
@@ -36,7 +36,7 @@ GitHub **no acepta tu contraseña** desde la terminal. Elige una de estas dos op
 
 1. GitHub → foto de perfil → **Settings** → **Developer settings** → **Personal access tokens** →
    **Fine-grained tokens** → **Generate new token**.
-2. Nombre: `curso-git`. Expiración: 30 días. Repository access: **All repositories** (o solo `mi-pagina`).
+2. Nombre: `token-curso`. Expiración: 30 días. Repository access: **All repositories** (o solo `curso-git`).
 3. Permissions → Repository permissions → **Contents: Read and write**.
 4. Genera el token y **cópialo ya** (no podrás volver a verlo).
 5. La primera vez que hagas `push`, usa el token como contraseña.
@@ -92,20 +92,23 @@ git pull                        # fetch + integrar los cambios en tu rama actual
 
 ## 🛠️ Práctica: sube tu repo a GitHub
 
-1. Crea el repo vacío `mi-pagina` en GitHub (sección 2).
+> 📽️ **Slide 15.** Vas a subir tu carpeta `curso-git` (con tu `me-gusta.txt`) a **tu propia** cuenta de GitHub.
+
+1. Crea el repo vacío `curso-git` en tu cuenta de GitHub (sección 2).
 2. Configura tu autenticación (opción A o B).
-3. Desde la carpeta de tu repo del módulo 2:
+3. Desde tu carpeta `curso-git` del módulo 2:
 
    ```bash
-   cd ~/mi-pagina
-   git remote add origin <URL-de-tu-repo>
+   cd ~/curso-git
+   git remote add origin https://github.com/tu-usuario/curso-git.git
    git remote -v
    git push -u origin main
    ```
 
-4. Recarga la página del repo en GitHub: verás tus archivos y tus 4 commits (enlace **commits**).
-5. **Simula un cambio de otra persona:** en GitHub abre `index.html` → ícono del lápiz (✏️) → cambia el
-   texto del `<footer>` → **Commit changes** (deja el mensaje que propone o escribe uno).
+4. Recarga la página del repo en GitHub: verás tus archivos, tu `me-gusta.txt` y tus 4 commits (enlace
+   **commits**). `notas.txt` **no** está: lo ignoraste en el módulo 2.
+5. **Simula un cambio de otra persona:** en GitHub abre `me-gusta.txt` → ícono del lápiz (✏️) → añade una
+   línea nueva (por ejemplo, tu serie favorita) → **Commit changes**.
 6. Trae ese cambio a tu computadora, primero revisando y luego integrando:
 
    ```bash
@@ -116,7 +119,9 @@ git pull                        # fetch + integrar los cambios en tu rama actual
    git log --oneline                 # ahora tu historial incluye el commit hecho en GitHub
    ```
 
-7. Haz un cambio local (por ejemplo, el `.lema` del `<header>`), commit y `git push`.
+   `cat me-gusta.txt` muestra la línea que agregaste desde la web.
+7. Haz un cambio local (por ejemplo, otra línea en `me-gusta.txt` o el lema de `proyecto/index.html`),
+   commit y `git push`.
 
 ### ✅ Comprueba que lo lograste
 
@@ -125,7 +130,7 @@ git pull                        # fetch + integrar los cambios en tu rama actual
 
 ### 🚀 Reto extra
 
-Clona tu propio repo en otra carpeta (`git clone <URL> mi-pagina-copia`), haz un commit desde ahí, súbelo
+Clona tu propio repo en otra carpeta (`git clone <URL> curso-git-copia`), haz un commit desde ahí, súbelo
 y luego haz `git pull` en la carpeta original. Acabas de simular a dos personas colaborando.
 
 ---

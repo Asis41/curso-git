@@ -36,8 +36,8 @@ flowchart LR
    **Compare & pull request**. (O bien: pestaña **Pull requests** → **New pull request**.)
    - **base:** `main` (dónde quieres fusionar) ← **compare:** tu rama.
    - **Título** claro y **descripción**: qué cambia, por qué, cómo probarlo. Este repo incluye una
-     plantilla de ejemplo en [`.github/pull_request_template.md`](../../.github/pull_request_template.md):
-     cópiala en la carpeta `.github/` de tu repo y GitHub la usará al abrir cada PR.
+     plantilla en [`.github/pull_request_template.md`](../../.github/pull_request_template.md). Tu
+     `curso-git` ya la incluye, así que GitHub la usa al abrir cada PR.
    - **Reviewers** (panel derecho): elige a quién le pides la revisión.
 5. **Revisión** (sección 3). Si te piden cambios: haz commits nuevos **en la misma rama** y `git push`;
    el PR se actualiza solo.
@@ -114,30 +114,32 @@ remote: - Changes must be made through a pull request.
 
 ## 🛠️ Práctica en parejas
 
-Persona **A** y persona **B**.
+> 📽️ **Slide 30.** Persona **A** y persona **B** trabajan sobre el `curso-git` de A.
 
 ### Preparación (lo hace A)
 
-1. A usa su repo `mi-pagina` (o crea uno nuevo con la página del curso). El repo debe ser **público**
-   para poder proteger `main` con una cuenta gratuita.
+1. A usa su repo `curso-git` de los módulos anteriores. Debe ser **público** para poder proteger `main`
+   con una cuenta gratuita (Settings → General → Danger Zone → Change visibility, si no lo es).
 2. **Settings → Collaborators → Add people** → agrega a B. B acepta la invitación (le llega por correo o
    en <https://github.com/notifications>).
 3. A protege `main` (sección 5) con 1 aprobación requerida.
 4. B clona el repo de A:
 
    ```bash
-   git clone <URL-del-repo-de-A> pagina-de-A
-   cd pagina-de-A
+   git clone <URL-del-repo-de-A> curso-git-de-A
+   cd curso-git-de-A
    ```
 
 ### Cada quien abre un PR
 
-Cada persona crea su rama y hace un cambio **en una zona distinta** de `index.html`:
+Cada persona crea su rama y cambia **archivos distintos** (así no hay conflicto):
 
 | | Rama | Cambio |
 |---|---|---|
-| **A** | `feature/seccion-contacto` | Agrega una sección "Contacto" antes de `</main>` |
-| **B** | `feature/mas-herramientas` | Agrega dos elementos a la lista de "Herramientas que uso" |
+| **A** | `feature/seccion-contacto` | Agrega una sección "Contacto" antes de `</main>` en `proyecto/index.html` |
+| **B** | `feature/gustos-<tu-nombre>` | Crea `me-gusta-<tu-nombre>.txt` con 3 cosas que le gustan |
+
+Al abrir el PR, la descripción ya viene rellena con la plantilla de `.github/pull_request_template.md`.
 
 1. Rama → commit(s) → `git push -u origin <rama>` → abrir PR → asignar a la otra persona como *reviewer*.
 2. Intenta hacer `git push` directo a `main` y comprueba que es rechazado.

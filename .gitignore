@@ -1,0 +1,20 @@
+# Ejemplo de .gitignore (se explica en el módulo 2).
+# Cada línea es un patrón; las que empiezan con # son comentarios.
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+
+# Configuración de editores
+.vscode/
+.idea/
+
+# Logs y temporales (* = cualquier texto)
+*.log
+*.tmp
+
+# Variables de entorno y secretos: NUNCA se suben
+.env
+
+# Carpetas de práctica que crean los scripts si las generas dentro del repo
+practica-*/

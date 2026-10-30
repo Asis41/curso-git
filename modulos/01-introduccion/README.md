@@ -50,7 +50,7 @@ completa del historial en su computadora, así que puedes trabajar sin internet.
 
 | Sistema | Cómo instalar |
 |---|---|
-| **Windows** | Descarga **Git for Windows** de <https://git-scm.com/downloads>. Acepta las opciones por defecto. Incluye **Git Bash**, la terminal que usaremos en el curso. |
+| **Windows** | Descarga **Git for Windows** de <https://git-scm.com/install/>. Acepta las opciones por defecto. Incluye **Git Bash**, la terminal que usaremos en el curso. |
 | **macOS** | Abre la Terminal y escribe `git --version`. Si no está instalado, el sistema ofrecerá instalar las *Command Line Tools*. O bien: `brew install git`. |
 | **Linux** | Debian/Ubuntu: `sudo apt install git` · Fedora: `sudo dnf install git` |
 
@@ -103,7 +103,7 @@ git config user.name        # consultar un valor concreto
 
 > 📽️ **Slide 6.**
 
-1. Instala Git según tu sistema operativo.
+1. Descarga Git desde <https://git-scm.com/install/> e instálalo según tu sistema operativo (sección 3).
 2. Abre la terminal (Git Bash en Windows) y comprueba `git --version`.
 3. Configura nombre, correo, rama por defecto y `pull.rebase false`.
 4. Revisa tu configuración:

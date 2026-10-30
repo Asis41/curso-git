@@ -20,7 +20,7 @@ trabajar en equipo con Pull Requests.
 ## Requisitos
 
 - Una computadora con Windows, macOS o Linux.
-- [Git](https://git-scm.com/downloads) instalado (en el módulo 1 se explica cómo).
+- Git instalado: descárgalo desde <https://git-scm.com/install/> (en el módulo 1 se explica cómo).
 - Una cuenta gratuita en [GitHub](https://github.com).
 - Un editor de código, por ejemplo [Visual Studio Code](https://code.visualstudio.com/).
 - Un navegador para ver la página de práctica.

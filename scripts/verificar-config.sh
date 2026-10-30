@@ -10,7 +10,7 @@ mal() { printf '  ✘ %s\n    Arréglalo con: %s\n' "$1" "$2"; fallos=$((fallos 
 echo "Verificando tu instalación de Git..."
 
 if ! command -v git >/dev/null 2>&1; then
-  mal "Git no está instalado" "descárgalo de https://git-scm.com/downloads"
+  mal "Git no está instalado" "descárgalo de https://git-scm.com/install/"
   exit 1
 fi
 ok "$(git --version)"

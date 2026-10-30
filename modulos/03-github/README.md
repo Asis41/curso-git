@@ -72,6 +72,7 @@ ssh -T git@github.com
 ```bash
 git remote add origin <URL>     # conecta tu repo local con el remoto
 git remote -v                   # lista los remotos configurados
+git remote rename origin upstream   # cambia el nombre de un remoto
 git push -u origin main         # primer push: sube main y la deja "enlazada" con origin/main
 git push                        # pushes siguientes (gracias a -u)
 git clone <URL>                 # descarga un repo completo (crea la carpeta)
@@ -96,17 +97,22 @@ git pull                        # fetch + integrar los cambios en tu rama actual
 
 1. Crea el repo vacío `curso-git` en tu cuenta de GitHub (sección 2).
 2. Configura tu autenticación (opción A o B).
-3. Desde tu carpeta `curso-git` del módulo 2:
+3. Tu `curso-git` es un clon, así que ya tiene un remoto `origin`... que apunta al repo del instructor
+   (donde no puedes subir). Renómbralo a `upstream` y agrega **tu** repo como `origin`:
 
    ```bash
    cd ~/curso-git
+   git remote -v                     # origin → github.com/Asis41/curso-git
+   git remote rename origin upstream
    git remote add origin https://github.com/tu-usuario/curso-git.git
-   git remote -v
+   git remote -v                     # origin → tu repo · upstream → el del curso
    git push -u origin main
    ```
 
-4. Recarga la página del repo en GitHub: verás tus archivos, tu `me-gusta.txt` y tus 4 commits (enlace
-   **commits**). `notas.txt` **no** está: lo ignoraste en el módulo 2.
+   > Gracias a `upstream` puedes traer las actualizaciones del curso cuando quieras: `git pull upstream main`.
+
+4. Recarga la página del repo en GitHub: verás los archivos, tu `me-gusta.txt` y el historial completo
+   (enlace **commits**): los commits del curso y los tuyos. `notas.txt` **no** está: lo ignoraste en el módulo 2.
 5. **Simula un cambio de otra persona:** en GitHub abre `me-gusta.txt` → ícono del lápiz (✏️) → añade una
    línea nueva (por ejemplo, tu serie favorita) → **Commit changes**.
 6. Trae ese cambio a tu computadora, primero revisando y luego integrando:
@@ -126,7 +132,8 @@ git pull                        # fetch + integrar los cambios en tu rama actual
 ### ✅ Comprueba que lo lograste
 
 - `git status` dice `Your branch is up to date with 'origin/main'`.
-- En GitHub ves 6 commits, incluido el que hiciste desde la web.
+- En GitHub ves tus commits (incluido el que hiciste desde la web) encima de los del curso.
+- `git remote -v` muestra `origin` (tu repo) y `upstream` (el del curso).
 
 ### 🚀 Reto extra
 

@@ -97,26 +97,26 @@ Puedes ver un `.gitignore` comentado en la raíz de este repo: [`.gitignore`](..
 
 ## 🛠️ Práctica: tu primer repositorio
 
-> 📽️ **Slide 10.** Trabaja en la carpeta `curso-git` que descargaste en el módulo 1. Como el ZIP no trae
-> historial, todavía no es un repositorio: lo vas a convertir en uno.
+> 📽️ **Slide 10.** Todo el curso se practica sobre **tu copia de este repositorio**.
 
-1. Entra en la carpeta, inicializa el repo y observa el estado:
-
-   ```bash
-   cd ~/curso-git
-   git init
-   git status          # todos los archivos del curso aparecen como "Untracked"
-   ```
-
-2. **Commit 1** – versión inicial:
+1. **Clona el repo del curso** en tu carpeta de usuario. `git clone` descarga el repositorio completo, con
+   todo su historial (lo verás a fondo en el módulo 3):
 
    ```bash
-   git add .
-   git status          # ahora aparecen como "Changes to be committed"
-   git commit -m "Agrega el material del curso"
+   cd ~
+   git clone https://github.com/Asis41/curso-git.git
+   cd curso-git
+   bash scripts/verificar-config.sh   # todo debe salir en ✔
+   git log --oneline                  # el historial del curso ya viene incluido
+   git status                         # nothing to commit, working tree clean
    ```
 
-3. **Commit 2** – personaliza la página: abre `proyecto/index.html` y cambia `[tu nombre]` por tu nombre.
+   > **Windows:** `~` es tu carpeta de usuario (`C:\Users\TuUsuario`).
+   >
+   > `git init` crea un repo desde cero; aquí no hace falta porque clonamos uno que ya existe.
+   > Lo practicas en el reto extra.
+
+2. **Commit 1** – personaliza la página: abre `proyecto/index.html` y cambia `[tu nombre]` por tu nombre.
 
    ```bash
    git status          # proyecto/index.html: modified
@@ -125,7 +125,7 @@ Puedes ver un `.gitignore` comentado en la raíz de este repo: [`.gitignore`](..
    git commit -m "Agrega mi nombre a la página"
    ```
 
-4. **Commit 3** – un archivo tuyo: crea `me-gusta.txt` con algo que te guste (una película, una canción,
+3. **Commit 2** – un archivo tuyo: crea `me-gusta.txt` con algo que te guste (una película, una canción,
    una comida, un videojuego...). Una cosa por línea.
 
    ```bash
@@ -138,7 +138,7 @@ Puedes ver un `.gitignore` comentado en la raíz de este repo: [`.gitignore`](..
 
    > `>` crea (o sobrescribe) el archivo; `>>` añade una línea al final. También puedes crearlo con tu editor.
 
-5. **Commit 4** – un archivo que **no** quieres guardar en Git:
+4. **Commit 3** – un archivo que **no** quieres guardar en Git:
 
    ```bash
    echo "Ideas sueltas, no subir" > notas.txt
@@ -151,7 +151,7 @@ Puedes ver un `.gitignore` comentado en la raíz de este repo: [`.gitignore`](..
 
    > **Ojo con `>>`:** este repo ya trae un `.gitignore`. Con `>` lo sobrescribirías y perderías su contenido.
 
-6. Revisa tu historial:
+5. Revisa tu historial:
 
    ```bash
    git log
@@ -160,19 +160,22 @@ Puedes ver un `.gitignore` comentado en la raíz de este repo: [`.gitignore`](..
 
 ### ✅ Comprueba que lo lograste
 
-`git log --oneline` muestra 4 commits (los identificadores serán distintos):
+`git log --oneline` muestra **tus 3 commits encima** de los del curso (los identificadores serán distintos):
 
 ```
 d4e5f6a Ignora el archivo de notas personales
 c3d4e5f Agrega lo que me gusta
 b2c3d4e Agrega mi nombre a la página
-a1b2c3d Agrega el material del curso
+02022ae Hace las prácticas en vivo sobre el propio repo del curso    ← commits del curso
+...
 ```
 
 Y `git status` dice `nothing to commit, working tree clean` (aunque `notas.txt` sigue en tu carpeta).
 
 ### 🚀 Reto extra
 
+- Crea un repo desde cero, **fuera** de `curso-git`: `mkdir ~/repo-vacio`, `cd ~/repo-vacio`, `git init`, crea un
+  archivo y haz tu primer commit. Observa que `git log` solo muestra ese commit.
 - Agrega una línea a `me-gusta.txt` y otra a `proyecto/index.html`, pero haz **un commit con cada archivo por separado**.
 - Prueba `git log -p` (muestra el cambio de cada commit) y `git show HEAD` (el último commit).
 

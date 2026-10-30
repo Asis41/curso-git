@@ -81,6 +81,8 @@ git rebase --abort
 ```bash
 git remote -v                         # ver remotos
 git remote add origin <URL>           # conectar con un remoto
+git remote rename origin upstream     # renombrar un remoto
+git pull upstream main                # traer cambios del repo original
 git push -u origin <rama>             # primer push de una rama
 git push                              # pushes siguientes
 git fetch                             # descargar sin integrar

@@ -155,23 +155,35 @@ Más información: <https://www.conventionalcommits.org/es/>
 
 ## 🛠️ Práctica final
 
-> 📽️ **Slide 35.** En tu repo `curso-git`, aplica todo el curso siguiendo **GitHub Flow**:
+> 📽️ **Slide 35.** Un último PR al repo del curso, siguiendo **GitHub Flow** y las convenciones de este módulo:
 
-1. Crea una rama con el prefijo correcto para cada tarea:
-   - `feature/` para agregar una sección nueva a `proyecto/index.html`.
-   - `fix/` para corregir algo (una errata en `me-gusta.txt`, un color).
-   - `docs/` para agregar un `proyecto/README.md` que describa tu página.
-2. Escribe commits con mensajes en **imperativo**, ≤50 caracteres (prueba Conventional Commits).
-3. Abre un PR por rama, fusiónalo y borra la rama.
+1. Rama con prefijo y tu usuario, desde lo último de GitHub:
+
+   ```bash
+   git fetch
+   git switch -c docs/tu-usuario origin/main
+   ```
+
+2. Añade a tu archivo de gustos qué fue lo que más te gustó del curso y haz commit con un mensaje en
+   **imperativo** de 50 caracteres o menos (prueba Conventional Commits):
+
+   ```bash
+   echo "Lo que más me gustó del curso: resolver conflictos" >> gustos/tu-usuario.txt
+   git commit -am "docs: agrega lo que más me gustó del curso"
+   git push -u origin docs/tu-usuario
+   ```
+
+3. Abre el PR, pide la revisión a un compañero, fusiónalo cuando lo apruebe y **borra la rama**.
 
 ### ✅ Comprueba que lo lograste
 
 ```bash
-git log --oneline -10
+git fetch --prune
+git log --oneline origin/main -10
 ```
 
-Cada mensaje está en imperativo y es comprensible sin abrir el código. `git branch -a` solo muestra `main`
-(y `origin/main`) porque las ramas fusionadas se borraron.
+Los mensajes están en imperativo y se entienden sin abrir los archivos. Tu rama `docs/tu-usuario` ya no
+aparece en `git branch -r` porque se borró al fusionarla.
 
 ---
 

@@ -81,6 +81,9 @@ Configuraciones recomendadas:
 # La rama principal de los repos nuevos se llamará "main" (como en GitHub)
 git config --global init.defaultBranch main
 
+# Al hacer git pull con historias distintas, fusionar (merge) en lugar de dar error
+git config --global pull.rebase false
+
 # Editor para los mensajes de commit (elige uno)
 git config --global core.editor "code --wait"   # Visual Studio Code
 git config --global core.editor "nano"          # nano (sencillo, en la terminal)
@@ -102,12 +105,16 @@ git config user.name        # consultar un valor concreto
 
 1. Instala Git según tu sistema operativo.
 2. Abre la terminal (Git Bash en Windows) y comprueba `git --version`.
-3. Configura nombre, correo y rama por defecto.
+3. Configura nombre, correo, rama por defecto y `pull.rebase false`.
 4. Revisa tu configuración:
 
    ```bash
    git config --global --list
    ```
+
+5. Crea una cuenta en <https://github.com> con el mismo correo que configuraste (si aún no tienes) y
+   **envía tu usuario de GitHub al instructor**: te invitará como colaborador del repo del curso para que
+   puedas abrir Pull Requests desde el módulo 3.
 
 ### ✅ Comprueba que lo lograste
 
@@ -117,13 +124,10 @@ La lista incluye tus datos:
 user.name=Tu Nombre
 user.email=tu@correo.com
 init.defaultBranch=main
+pull.rebase=false
 ```
 
 En el módulo 2, al clonar el repo del curso, lo confirmarás con `scripts/verificar-config.sh`.
-
-### 🚀 Reto extra
-
-Crea una cuenta en <https://github.com> (la necesitarás en el módulo 3) con el mismo correo que configuraste.
 
 ---
 

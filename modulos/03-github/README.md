@@ -21,7 +21,7 @@ flowchart LR
 ## 2. Crear el repositorio en GitHub
 
 1. En GitHub: botón **+** (arriba a la derecha) → **New repository**.
-2. Nombre: `curso-git`. Visibilidad: **pública** (la necesitarás así en el módulo 6).
+2. Elige un nombre y la visibilidad (pública o privada).
 3. **No** marques "Add a README", ".gitignore" ni "license": tu repo local ya tiene historial y el remoto
    debe estar vacío para subirlo sin conflictos.
 4. **Create repository**. GitHub muestra la URL del repo, en dos formatos:
@@ -72,7 +72,6 @@ ssh -T git@github.com
 ```bash
 git remote add origin <URL>     # conecta tu repo local con el remoto
 git remote -v                   # lista los remotos configurados
-git remote rename origin upstream   # cambia el nombre de un remoto
 git push -u origin main         # primer push: sube main y la deja "enlazada" con origin/main
 git push                        # pushes siguientes (gracias a -u)
 git clone <URL>                 # descarga un repo completo (crea la carpeta)
@@ -91,54 +90,60 @@ git pull                        # fetch + integrar los cambios en tu rama actual
 
 `git pull` = `git fetch` + `git merge origin/main`.
 
-## 🛠️ Práctica: sube tu repo a GitHub
+## 🛠️ Práctica: sube tus gustos al repo del curso
 
-> 📽️ **Slide 15.** Vas a subir tu carpeta `curso-git` (con tu `me-gusta.txt`) a **tu propia** cuenta de GitHub.
+> 📽️ **Slide 15.** No creas un repo nuevo: subes tus commits **al repo del curso** con un Pull Request
+> a `main`. Tu `origin` ya apunta ahí porque lo clonaste en el módulo 2.
 
-1. Crea el repo vacío `curso-git` en tu cuenta de GitHub (sección 2).
+1. **Acepta la invitación** del instructor para ser colaborador: te llega por correo o en
+   <https://github.com/Asis41/curso-git/invitations>.
 2. Configura tu autenticación (opción A o B).
-3. Tu `curso-git` es un clon, así que ya tiene un remoto `origin`... que apunta al repo del instructor
-   (donde no puedes subir). Renómbralo a `upstream` y agrega **tu** repo como `origin`:
+3. Intenta subir directo a `main`:
 
    ```bash
    cd ~/curso-git
-   git remote -v                     # origin → github.com/Asis41/curso-git
-   git remote rename origin upstream
-   git remote add origin https://github.com/tu-usuario/curso-git.git
-   git remote -v                     # origin → tu repo · upstream → el del curso
-   git push -u origin main
+   git remote -v       # origin → github.com/Asis41/curso-git
+   git push
+   # remote: - Changes must be made through a pull request.
    ```
 
-   > Gracias a `upstream` puedes traer las actualizaciones del curso cuando quieras: `git pull upstream main`.
+   **Rechazado, y es a propósito:** `main` está protegida, nadie sube directo. (Si ves
+   `rejected ... (fetch first)` es porque alguien ya actualizó `main`: también te impide subir.) Los cambios entran por Pull
+   Request (lo verás a fondo en el módulo 6).
 
-4. Recarga la página del repo en GitHub: verás los archivos, tu `me-gusta.txt` y el historial completo
-   (enlace **commits**): los commits del curso y los tuyos. `notas.txt` **no** está: lo ignoraste en el módulo 2.
-5. **Simula un cambio de otra persona:** en GitHub abre `me-gusta.txt` → ícono del lápiz (✏️) → añade una
-   línea nueva (por ejemplo, tu serie favorita) → **Commit changes**.
-6. Trae ese cambio a tu computadora, primero revisando y luego integrando:
+4. Sube tus commits en una rama con tu usuario (las ramas se explican en el módulo 4; por ahora basta con esto):
 
    ```bash
-   git fetch
-   git status                        # "Your branch is behind 'origin/main' by 1 commit"
-   git log --oneline main..origin/main   # commits que están en el remoto y tú no tienes
-   git pull
-   git log --oneline                 # ahora tu historial incluye el commit hecho en GitHub
+   git switch -c alumno/tu-usuario
+   git push -u origin alumno/tu-usuario
    ```
 
-   `cat me-gusta.txt` muestra la línea que agregaste desde la web.
-7. Haz un cambio local (por ejemplo, otra línea en `me-gusta.txt` o el lema de `proyecto/index.html`),
-   commit y `git push`.
+5. En GitHub aparece un aviso amarillo **Compare & pull request**: púlsalo. Comprueba que dice
+   **base: main ← compare: alumno/tu-usuario**, escribe un título ("Agrega los gustos de tu-usuario") y
+   **Create pull request**. En **Files changed** verás tu archivo de gustos y la línea de `.gitignore`;
+   `notas.txt` **no** está.
+6. Espera a que el instructor fusione tu PR. Luego trae a tu computadora lo que hay en `main`, incluidos
+   los gustos de tus compañeros, primero revisando y luego integrando:
+
+   ```bash
+   git switch main
+   git fetch
+   git status                            # "Your branch is behind 'origin/main' by N commits"
+   git log --oneline main..origin/main   # commits que están en GitHub y tú no tienes
+   git pull
+   ls gustos/                            # ¡los archivos de tus compañeros!
+   ```
 
 ### ✅ Comprueba que lo lograste
 
+- Tu PR aparece en **Pull requests → Closed** como *Merged*.
+- `ls gustos/` muestra tu archivo y los de tus compañeros.
 - `git status` dice `Your branch is up to date with 'origin/main'`.
-- En GitHub ves tus commits (incluido el que hiciste desde la web) encima de los del curso.
-- `git remote -v` muestra `origin` (tu repo) y `upstream` (el del curso).
 
 ### 🚀 Reto extra
 
-Clona tu propio repo en otra carpeta (`git clone <URL> curso-git-copia`), haz un commit desde ahí, súbelo
-y luego haz `git pull` en la carpeta original. Acabas de simular a dos personas colaborando.
+Clona el repo en otra carpeta (`git clone <URL> curso-git-copia`), y compara: `git log --oneline` es igual
+en las dos carpetas porque ambas copian el mismo `main` de GitHub.
 
 ---
 

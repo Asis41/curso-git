@@ -114,35 +114,34 @@ remote: - Changes must be made through a pull request.
 
 ## 🛠️ Práctica en parejas
 
-> 📽️ **Slide 30.** Persona **A** y persona **B** trabajan sobre el `curso-git` de A.
-
-### Preparación (lo hace A)
-
-1. A usa su repo `curso-git` de los módulos anteriores. Debe ser **público** para poder proteger `main`
-   con una cuenta gratuita (Settings → General → Danger Zone → Change visibility, si no lo es).
-2. **Settings → Collaborators → Add people** → agrega a B. B acepta la invitación (le llega por correo o
-   en <https://github.com/notifications>).
-3. A protege `main` (sección 5) con 1 aprobación requerida.
-4. B clona el repo de A:
-
-   ```bash
-   git clone <URL-del-repo-de-A> curso-git-de-A
-   cd curso-git-de-A
-   ```
+> 📽️ **Slide 30.** En parejas (A y B), sobre el repo del curso. Al empezar, el instructor cambia la
+> protección de `main` a **1 aprobación requerida** (sección 5): desde ahora ningún PR se fusiona sin que
+> otra persona lo apruebe.
 
 ### Cada quien abre un PR
 
-Cada persona crea su rama y cambia **archivos distintos** (así no hay conflicto):
+Cada persona le **recomienda algo a su compañero/a** escribiendo en el archivo de gustos del otro.
+Como A edita el archivo de B y B el de A, no hay conflictos.
 
-| | Rama | Cambio |
-|---|---|---|
-| **A** | `feature/seccion-contacto` | Agrega una sección "Contacto" antes de `</main>` en `proyecto/index.html` |
-| **B** | `feature/gustos-<tu-nombre>` | Crea `me-gusta-<tu-nombre>.txt` con 3 cosas que le gustan |
+1. Crea tu rama **desde `origin/main`** (tu `main` local tiene tu estilo y tus pruebas del módulo 5, que no
+   deben ir en el PR):
 
-Al abrir el PR, la descripción ya viene rellena con la plantilla de `.github/pull_request_template.md`.
+   ```bash
+   cd ~/curso-git
+   git fetch
+   git switch -c recomienda/tu-usuario origin/main
+   ```
 
-1. Rama → commit(s) → `git push -u origin <rama>` → abrir PR → asignar a la otra persona como *reviewer*.
-2. Intenta hacer `git push` directo a `main` y comprueba que es rechazado.
+2. Añade una recomendación al final del archivo de tu compañero/a y súbela:
+
+   ```bash
+   echo "Recomendación de tu-usuario: la serie Dark" >> gustos/usuario-del-companero.txt
+   git commit -am "Recomienda una serie a usuario-del-companero"
+   git push -u origin recomienda/tu-usuario
+   ```
+
+3. Abre el PR hacia `main` y asigna a tu compañero/a como *reviewer*. La descripción ya viene con la
+   plantilla de `.github/pull_request_template.md`.
 
 ### Cada quien revisa el PR del otro
 
@@ -158,23 +157,29 @@ Luego, en tu propio PR:
 5. Pide de nuevo la revisión (ícono 🔄 junto al nombre del reviewer).
 6. El revisor aprueba con **Approve**.
 7. Fusiona tu PR con **Squash and merge** y borra la rama.
-8. Ambos actualizan su copia local: `git switch main` y `git pull`.
+8. Mira el resultado en tu computadora:
 
-> Si el segundo PR dice *"This branch is out-of-date with the base branch"*, pulsa **Update branch**.
+   ```bash
+   git fetch
+   git log --oneline origin/main -5     # un commit por PR fusionado (por el squash)
+   git show origin/main:gustos/tu-usuario.txt   # la recomendación que te dejaron
+   ```
+
+> Si el PR dice *"This branch is out-of-date with the base branch"*, pulsa **Update branch**.
 > Si hay conflictos, GitHub te deja resolverlos en el navegador (**Resolve conflicts**) o hazlo en local:
-> `git switch tu-rama`, `git merge main`, resuelve (módulo 5) y `git push`.
+> `git switch tu-rama`, `git merge origin/main`, resuelve (módulo 5) y `git push`.
 
 ### ✅ Comprueba que lo lograste
 
-- En la pestaña **Pull requests → Closed** hay 2 PRs fusionados, cada uno con comentarios, una sugerencia
-  aplicada y una aprobación.
-- `git log --oneline` en `main` muestra un commit por PR (por el *squash*).
-- Un `git push` directo a `main` es rechazado.
+- Tu PR aparece en **Pull requests → Closed** como *Merged*, con un comentario, una sugerencia aplicada
+  y una aprobación de tu compañero/a.
+- Tu archivo de gustos en GitHub tiene la recomendación que te dejaron.
+- Sin la aprobación, el botón **Merge pull request** estaba bloqueado.
 
 ### 🚀 Reto extra
 
-- Cambien los papeles: B crea un repo, protege `main` y repiten el ejercicio.
-- Hagan que los dos PRs modifiquen **la misma línea** y resuelvan el conflicto en GitHub.
+- Recomiéndale algo a otro compañero más y repitan el ciclo con otra pareja.
+- Que los dos de la pareja editen **la misma línea** del mismo archivo y resuelvan el conflicto en GitHub.
 
 ---
 

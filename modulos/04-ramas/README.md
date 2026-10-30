@@ -101,9 +101,10 @@ tutoriales y en internet, así que conviene reconocerlo:
 > **Antes de cambiar de rama**, haz commit de tus cambios (o guárdalos con `git stash`). Si no, Git puede
 > negarse a cambiar o llevarse tus cambios a la otra rama.
 
-## 🛠️ Práctica: una feature en su propia rama
+## 🛠️ Práctica: tu propio estilo en tu propia rama
 
-> 📽️ **Slide 19.** Trabaja en tu carpeta `curso-git` de los módulos anteriores.
+> 📽️ **Slide 19.** Trabaja en tu carpeta `curso-git`. La página [`proyecto/index.html`](../../proyecto/index.html)
+> tiene el HTML y el CSS (dentro de `<style>`) en un solo archivo.
 
 1. Asegúrate de estar al día en `main`:
 
@@ -112,38 +113,36 @@ tutoriales y en internet, así que conviene reconocerlo:
    git pull
    ```
 
-2. Crea la rama de la feature:
+2. Crea tu rama de estilo (cambia `tu-usuario` por tu usuario de GitHub):
 
    ```bash
-   git switch -c feature/galeria
-   git branch          # * feature/galeria
+   git switch -c estilo/tu-usuario
+   git branch          # * estilo/tu-usuario
    ```
 
-3. En `proyecto/index.html`, agrega una sección nueva dentro de `<main>`, después de "Herramientas que uso":
+3. **Pídele un estilo a una IA.** Abre `proyecto/index.html` en tu editor, copia **todo** su contenido y
+   pégalo en tu IA de preferencia (Claude, ChatGPT, Gemini, Copilot...) junto con lo que quieras cambiar.
+   Por ejemplo, a Claude:
 
-   ```html
-   <section id="galeria">
-     <h2>Proyectos favoritos</h2>
-     <ul>
-       <li>Mi página personal</li>
-       <li>Un proyecto que quiero hacer</li>
-     </ul>
-   </section>
-   ```
+   > Cambia los colores a rojo y agrega un recuadro al título. Devuélveme el archivo completo.
+
+   Cada quien pide su propio estilo: fondo oscuro, otra tipografía, bordes redondeados, tus colores
+   favoritos... Reemplaza el contenido de `proyecto/index.html` por la respuesta, guarda y ábrelo en el navegador.
+
+4. Revisa qué cambió la IA y haz commit:
 
    ```bash
-   git add proyecto/index.html
-   git commit -m "Agrega sección de proyectos favoritos"
+   git diff            # las líneas que cambió la IA
+   git commit -am "Cambia el estilo de la página"
    ```
 
-4. Agrega un estilo para la sección en `proyecto/styles.css` (por ejemplo `#galeria { background: #f6f8fa; padding: 8px 16px; }`)
-   y haz otro commit.
+   ¿No te convence? Pídele otro ajuste y haz otro commit: cada intento queda guardado.
 
-5. **Observa cómo cambian tus archivos según la rama:**
+5. **Observa cómo cambian tus archivos según la rama** (recarga el navegador después de cada comando):
 
    ```bash
-   git switch main     # abre proyecto/index.html en el navegador: la galería NO está
-   git switch -        # vuelve a feature/galeria: la galería aparece
+   git switch main     # la página vuelve al estilo original
+   git switch -        # vuelve a estilo/tu-usuario: tu estilo aparece
    ```
 
 6. Mira el historial de todas las ramas:
@@ -155,10 +154,11 @@ tutoriales y en internet, así que conviene reconocerlo:
 7. Sube la rama a GitHub:
 
    ```bash
-   git push -u origin feature/galeria
+   git push -u origin estilo/tu-usuario
    ```
 
-   En GitHub, el selector de ramas (arriba a la izquierda, dice `main`) ahora muestra `feature/galeria`.
+   En GitHub, el selector de ramas (arriba a la izquierda, dice `main`) ahora muestra tu rama y las de tus
+   compañeros. **No abras un Pull Request con esta rama:** todos cambiaron el mismo archivo.
 
 8. Practica renombrar y borrar con una rama de prueba:
 
@@ -169,23 +169,22 @@ tutoriales y en internet, así que conviene reconocerlo:
    git branch -d experimento
    ```
 
-> No fusiones todavía `feature/galeria` en `main`: eso es el módulo 5 (y el 6, vía Pull Request).
+> No fusiones todavía tu rama de estilo en `main`: eso es el módulo 5.
 
 ### ✅ Comprueba que lo lograste
 
-`git log --oneline --graph --all` muestra algo así:
+`git log --oneline --graph --all` muestra tu rama un commit por delante de `main`:
 
 ```
-* 9f8e7d6 (HEAD -> feature/galeria, origin/feature/galeria) Agrega estilos a la galería
-* 8e7d6c5 Agrega sección de proyectos favoritos
-* 7d6c5b4 (origin/main, main) Agrega mi serie favorita
+* 9f8e7d6 (HEAD -> estilo/tu-usuario, origin/estilo/tu-usuario) Cambia el estilo de la página
+*   7d6c5b4 (origin/main, main) Merge pull request #12 from Asis41/alumno/tu-usuario
 * ...
 ```
 
 ### 🚀 Reto extra
 
-Desde `main`, crea otra rama `feature/contacto`, agrega una sección de contacto y haz commit. Luego mira
-`git log --oneline --graph --all`: verás dos ramas que salen del mismo punto.
+Desde `main`, crea otra rama `estilo2/tu-usuario` y pide a la IA un estilo completamente distinto. Alterna
+entre las dos ramas en el navegador y mira `git log --oneline --graph --all`: dos ramas que salen del mismo punto.
 
 ---
 

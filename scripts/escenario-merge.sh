@@ -28,9 +28,9 @@ git config core.autocrlf false  # evita avisos "LF will be replaced by CRLF" en 
 git add .
 git commit -q -m "Versión inicial de la página"
 
-# Escenario 2 (merge con commit): rama que sale del primer commit y toca otro archivo.
+# Escenario 2 (merge con commit): rama que sale del primer commit y toca otra parte del archivo.
 git switch -q -c feature/estilos
-reemplazar styles.css "background: #ffffff;" "background: #f6f8fa;"
+reemplazar index.html "background: #ffffff;" "background: #f6f8fa;"
 git commit -q -am "Cambia el color de fondo"
 
 # main avanza por su cuenta, así feature/estilos queda divergente.

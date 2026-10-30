@@ -58,11 +58,11 @@ Ejemplo de `git status`:
 On branch main
 Changes to be committed:
   (use "git restore --staged <file>..." to unstage)
-        modified:   index.html          ← en staging (verde)
+        modified:   .gitignore          ← en staging (verde)
 
 Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
-        modified:   styles.css          ← modificado, sin staging (rojo)
+        modified:   proyecto/index.html ← modificado, sin staging (rojo)
 
 Untracked files:
         notas.txt                       ← Git no lo conoce
@@ -116,29 +116,21 @@ Puedes ver un `.gitignore` comentado en la raíz de este repo: [`.gitignore`](..
    > `git init` crea un repo desde cero; aquí no hace falta porque clonamos uno que ya existe.
    > Lo practicas en el reto extra.
 
-2. **Commit 1** – personaliza la página: abre `proyecto/index.html` y cambia `[tu nombre]` por tu nombre.
+2. **Commit 1** – tu nota personal: en la carpeta `gustos/` crea un archivo con **tu usuario de GitHub**
+   como nombre y escribe cosas que te gusten (una película, una canción, una comida...), una por línea.
+   Cambia `tu-usuario` por tu usuario real: así nadie pisa el archivo de otro compañero.
 
    ```bash
-   git status          # proyecto/index.html: modified
-   git diff            # muestra exactamente qué línea cambió
-   git add proyecto/index.html
-   git commit -m "Agrega mi nombre a la página"
-   ```
-
-3. **Commit 2** – un archivo tuyo: crea `me-gusta.txt` con algo que te guste (una película, una canción,
-   una comida, un videojuego...). Una cosa por línea.
-
-   ```bash
-   echo "Mi película favorita: El viaje de Chihiro" > me-gusta.txt
-   echo "Mi comida favorita: tacos al pastor" >> me-gusta.txt
-   git status          # me-gusta.txt aparece como Untracked
-   git add me-gusta.txt
+   echo "Mi película favorita: El viaje de Chihiro" > gustos/tu-usuario.txt
+   echo "Mi comida favorita: tacos al pastor" >> gustos/tu-usuario.txt
+   git status          # gustos/tu-usuario.txt aparece como Untracked
+   git add gustos/tu-usuario.txt
    git commit -m "Agrega lo que me gusta"
    ```
 
    > `>` crea (o sobrescribe) el archivo; `>>` añade una línea al final. También puedes crearlo con tu editor.
 
-4. **Commit 3** – un archivo que **no** quieres guardar en Git:
+3. **Commit 2** – un archivo que **no** quieres guardar en Git:
 
    ```bash
    echo "Ideas sueltas, no subir" > notas.txt
@@ -151,7 +143,7 @@ Puedes ver un `.gitignore` comentado en la raíz de este repo: [`.gitignore`](..
 
    > **Ojo con `>>`:** este repo ya trae un `.gitignore`. Con `>` lo sobrescribirías y perderías su contenido.
 
-5. Revisa tu historial:
+4. Revisa tu historial:
 
    ```bash
    git log
@@ -160,13 +152,12 @@ Puedes ver un `.gitignore` comentado en la raíz de este repo: [`.gitignore`](..
 
 ### ✅ Comprueba que lo lograste
 
-`git log --oneline` muestra **tus 3 commits encima** de los del curso (los identificadores serán distintos):
+`git log --oneline` muestra **tus 2 commits encima** de los del curso (los identificadores serán distintos):
 
 ```
 d4e5f6a Ignora el archivo de notas personales
 c3d4e5f Agrega lo que me gusta
-b2c3d4e Agrega mi nombre a la página
-02022ae Hace las prácticas en vivo sobre el propio repo del curso    ← commits del curso
+dd52822 Empieza la práctica del módulo 2 con git clone    ← commits del curso
 ...
 ```
 
@@ -176,7 +167,7 @@ Y `git status` dice `nothing to commit, working tree clean` (aunque `notas.txt` 
 
 - Crea un repo desde cero, **fuera** de `curso-git`: `mkdir ~/repo-vacio`, `cd ~/repo-vacio`, `git init`, crea un
   archivo y haz tu primer commit. Observa que `git log` solo muestra ese commit.
-- Agrega una línea a `me-gusta.txt` y otra a `proyecto/index.html`, pero haz **un commit con cada archivo por separado**.
+- Agrega dos líneas a tu archivo de gustos y haz **un commit por cada línea** (`git add -p` te deja elegir).
 - Prueba `git log -p` (muestra el cambio de cada commit) y `git show HEAD` (el último commit).
 
 ---

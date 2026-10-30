@@ -8,9 +8,9 @@ trabajar en equipo con Pull Requests.
 | # | Módulo | Práctica |
 |---|---|---|
 | 1 | [Introducción al control de versiones](modulos/01-introduccion/README.md) | Instalar y configurar Git |
-| 2 | [Fundamentos de Git](modulos/02-fundamentos/README.md) | Crear un repo local y hacer los primeros commits |
-| 3 | [Trabajar con GitHub](modulos/03-github/README.md) | Subir el repo local a GitHub |
-| 4 | [Ramas: el concepto central](modulos/04-ramas/README.md) | Desarrollar una *feature* en su propia rama |
+| 2 | [Fundamentos de Git](modulos/02-fundamentos/README.md) | Clonar el repo y hacer los primeros commits |
+| 3 | [Trabajar con GitHub](modulos/03-github/README.md) | Subir tus commits con un Pull Request a `main` |
+| 4 | [Ramas: el concepto central](modulos/04-ramas/README.md) | Darle tu propio estilo a la página, con IA, en tu rama |
 | 5 | [Fusión de ramas y conflictos](modulos/05-merge-y-conflictos/README.md) | Provocar y resolver un conflicto a propósito |
 | 6 | [Colaboración con Pull Requests](modulos/06-pull-requests/README.md) | En parejas: abrir un PR y revisar el del otro |
 | 7 | [Estrategias de ramificación y buenas prácticas](modulos/07-estrategias/README.md) | Aplicar GitHub Flow con buenas convenciones |
@@ -29,23 +29,38 @@ trabajar en equipo con Pull Requests.
 
 ## Cómo usar este repositorio
 
-Todo el curso se practica sobre **tu copia de este repositorio**, al mismo tiempo que se proyectan las slides:
+Todo el curso se practica sobre **este mismo repositorio**, al mismo tiempo que se proyectan las slides.
+Todos trabajan en el mismo repo, así que cada quien usa **su usuario de GitHub** en sus archivos y ramas.
 
-1. **Módulo 1:** instalas y configuras Git.
-2. **Módulo 2:** clonas este repo con `git clone https://github.com/Asis41/curso-git.git`, personalizas
-   [`proyecto/index.html`](proyecto/) y creas tu propio `me-gusta.txt`.
-3. **Módulo 3:** lo subes a un repo `curso-git` en **tu** cuenta de GitHub (el del curso queda como `upstream`).
-4. **Módulos 4 a 7:** ramas, conflictos y Pull Requests sobre ese mismo repo.
+1. **Módulo 1:** instalas y configuras Git, y le das tu usuario de GitHub al instructor.
+2. **Módulo 2:** clonas este repo (`git clone https://github.com/Asis41/curso-git.git`) y creas tu archivo
+   `gustos/tu-usuario.txt`.
+3. **Módulo 3:** lo subes con un Pull Request a `main`.
+4. **Módulo 4:** en tu rama `estilo/tu-usuario`, una IA le da tu estilo a [`proyecto/index.html`](proyecto/index.html).
+5. **Módulos 5 a 7:** conflictos, revisión de Pull Requests en parejas y buenas prácticas.
 
 Cada guía indica en qué slide va su práctica (📽️) y termina con **✅ Comprueba que lo lograste**.
+
+## Para el instructor
+
+Antes del módulo 3:
+
+1. **Invita a los alumnos:** Settings → Collaborators → Add people, con el usuario que te dieron en el
+   módulo 1. Deben aceptar la invitación.
+2. **Protege `main`:** Settings → Rules → Rulesets → New branch ruleset, objetivo *Include default branch*,
+   activa *Restrict deletions*, *Block force pushes* y *Require a pull request before merging* con
+   **0 aprobaciones** (tú fusionas los PR del módulo 3). En el módulo 6 súbelo a **1 aprobación** en vivo.
+3. **Fusiona los PR del módulo 3 con *Create a merge commit***, no con squash: así el `git pull` de cada
+   alumno avanza sin divergir.
+4. No fusiones ramas `estilo/*`: todas cambian `proyecto/index.html`.
 
 ## Contenido
 
 ```
 ├── modulos/                     guía de cada módulo
-├── proyecto/                    página web de ejemplo para las prácticas
-│   ├── index.html
-│   └── styles.css
+├── gustos/                      un archivo por alumno (módulos 2 y 3)
+├── proyecto/
+│   └── index.html               página de práctica: HTML y CSS en un solo archivo
 ├── scripts/
 │   ├── verificar-config.sh      módulo 1: comprueba tu instalación y configuración
 │   └── escenario-merge.sh       módulo 5: crea un repo con merges y un conflicto listos

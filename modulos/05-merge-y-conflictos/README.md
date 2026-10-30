@@ -179,7 +179,7 @@ El script crea la carpeta `../practica-merge` (junto a tu `curso-git`, no dentro
 | Rama | Qué cambia | Qué pasará al fusionarla |
 |---|---|---|
 | `feature/footer` | Texto del footer | Fast-forward |
-| `feature/estilos` | Color de fondo en `styles.css` | Merge con commit |
+| `feature/estilos` | Color de fondo, en el `<style>` | Merge con commit |
 | `feature/titulo-azul` | El `<h1>` | Merge sin conflicto |
 | `feature/titulo-rojo` | El mismo `<h1>` | **Conflicto** |
 
@@ -205,19 +205,22 @@ Resuelve el conflicto siguiendo los pasos de la sección 2 (decide tú el títul
 
 ### Parte B: provócalo tú mismo en tu `curso-git`
 
-Primero integra la rama del módulo 4:
+Todo esto ocurre **solo en tu computadora**: no hagas `git push` de `main` (está protegida, y tu estilo
+es solo tuyo).
+
+Primero integra tu rama de estilo del módulo 4:
 
 ```bash
 cd ~/curso-git
 git switch main
-git merge feature/galeria            # probablemente fast-forward
+git merge estilo/tu-usuario          # fast-forward: tu main ya tiene tu estilo
 ```
 
-Ahora dos ramas van a cambiar **la primera línea de `me-gusta.txt`**:
+Ahora dos ramas van a cambiar **la primera línea de tu archivo de gustos**:
 
 ```bash
 git switch -c gusto-a
-# con tu editor, cambia la PRIMERA línea de me-gusta.txt (p. ej. otra película)
+# con tu editor, cambia la PRIMERA línea de gustos/tu-usuario.txt (p. ej. otra película)
 git commit -am "Cambia mi película favorita"
 
 git switch main
@@ -227,16 +230,15 @@ git commit -am "Cambia mi película favorita por otra"
 
 git switch main
 git merge gusto-a                    # fast-forward
-git merge gusto-b                    # ¡CONFLICTO en me-gusta.txt!
+git merge gusto-b                    # ¡CONFLICTO en gustos/tu-usuario.txt!
 ```
 
-Abre `me-gusta.txt`, decide qué queda (¿por qué no las dos películas?), borra los marcadores y termina:
+Abre `gustos/tu-usuario.txt`, decide qué queda (¿por qué no las dos películas?), borra los marcadores y termina:
 
 ```bash
-git add me-gusta.txt
+git add gustos/tu-usuario.txt
 git commit --no-edit
 git branch -d gusto-a gusto-b        # limpia las ramas fusionadas
-git push
 ```
 
 ### ✅ Comprueba que lo lograste
@@ -270,7 +272,8 @@ Y `index.html` **no contiene** ningún `<<<<<<<`, `=======` ni `>>>>>>>`:
 grep -n "<<<<<<<\|>>>>>>>" index.html   # no debe imprimir nada
 ```
 
-En tu `curso-git` (Parte B), lo mismo con `me-gusta.txt`, y en GitHub ves el commit de merge.
+En tu `curso-git` (Parte B), lo mismo con `gustos/tu-usuario.txt`, y `git log --oneline --graph` muestra
+el commit de merge.
 
 ### 🚀 Reto extra
 

@@ -3,7 +3,7 @@
 ## Objetivos
 
 - Crear un repositorio remoto en GitHub.
-- Autenticarte con un **token** (HTTPS) o con **SSH**.
+- Autenticarte iniciando sesión en el navegador (o, como alternativa, con un **token** o **SSH**).
 - Usar `remote`, `push`, `clone`, `fetch` y `pull`.
 
 ## 1. Repositorio local vs. remoto
@@ -30,9 +30,26 @@ flowchart LR
 
 ## 3. Autenticación
 
-GitHub **no acepta tu contraseña** desde la terminal. Elige una de estas dos opciones.
+GitHub **no acepta tu contraseña** escrita en la terminal. La forma más fácil es iniciar sesión en el navegador.
 
-### Opción A: HTTPS + token personal (más rápido para empezar)
+### Recomendado: iniciar sesión en el navegador
+
+**Git Credential Manager** se encarga de todo. La primera vez que hagas `git push`:
+
+1. Se abre una ventana **Connect to GitHub** → pulsa **Sign in with your browser**.
+2. El navegador abre GitHub: inicia sesión con tu usuario y contraseña de siempre.
+3. Pulsa **Authorize git-ecosystem** (el permiso para Git Credential Manager).
+4. Vuelve a la terminal: el `push` continúa solo. Tus credenciales quedan guardadas y no te las vuelve a pedir.
+
+| Sistema | Qué necesitas |
+|---|---|
+| **Windows** | Nada: viene incluido en Git for Windows. |
+| **macOS** | `brew install --cask git-credential-manager` |
+| **Linux** | Lo más sencillo es la CLI de GitHub: instala `gh`, ejecuta `gh auth login` (elige *GitHub.com → HTTPS → Login with a web browser*) y luego `gh auth setup-git`. |
+
+> ¿No se abre la ventana? Usa una de las alternativas de abajo.
+
+### Alternativa A: HTTPS + token personal
 
 1. GitHub → foto de perfil → **Settings** → **Developer settings** → **Personal access tokens** →
    **Fine-grained tokens** → **Generate new token**.
@@ -41,13 +58,7 @@ GitHub **no acepta tu contraseña** desde la terminal. Elige una de estas dos op
 4. Genera el token y **cópialo ya** (no podrás volver a verlo).
 5. La primera vez que hagas `push`, usa el token como contraseña.
 
-> **Windows:** Git for Windows incluye *Git Credential Manager*: al hacer `push` se abre una ventana para
-> iniciar sesión en GitHub desde el navegador y recuerda tus credenciales. Normalmente no necesitas el token.
->
-> **macOS:** las credenciales se guardan en el Llavero automáticamente.
-> **Linux:** `git config --global credential.helper store` las guarda (en texto plano) tras el primer uso.
-
-### Opción B: SSH (recomendada a largo plazo)
+### Alternativa B: SSH
 
 ```bash
 # 1. Generar un par de llaves (pulsa Enter para aceptar la ruta por defecto)
@@ -97,7 +108,8 @@ git pull                        # fetch + integrar los cambios en tu rama actual
 
 1. **Acepta la invitación** del instructor para ser colaborador: te llega por correo o en
    <https://github.com/Asis41/curso-git/invitations>.
-2. Configura tu autenticación (opción A o B).
+2. Autenticación: no tienes que preparar nada. En el paso 3, al hacer `git push`, se abrirá el navegador
+   para que inicies sesión en GitHub (sección 3). En macOS/Linux instala antes lo que indica su tabla.
 3. Intenta subir directo a `main`:
 
    ```bash
